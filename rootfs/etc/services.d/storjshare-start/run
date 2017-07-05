@@ -1,5 +1,14 @@
 #!/usr/bin/execlineb -P
 
-foreground { s6-svwait -t 5000 -u "/var/run/s6/services/storjshare-daemon" }
+foreground
+{
+	s6-sleep 2
+  s6-svwait -t 5000 -u "/var/run/s6/services/storjshare-daemon"
+}
 
-"/usr/bin/storjshare-start" -c "/config/config.json"
+background
+{
+	exec "/var/run/s6/services/storjshare-start/start-all-configs.sh"
+}
+
+s6-pause -th
