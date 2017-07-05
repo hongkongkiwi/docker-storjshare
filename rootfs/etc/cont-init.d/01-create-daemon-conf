@@ -3,10 +3,10 @@
 CONFIG_DIR="$HOME/.config/storjshare/config"
 
 # Check if config dir exists, if not make it
-[ ! -d "$CONFIG_DIR"] && mkdir -p "$CONFIG_DIR"
+[ ! -d "$CONFIG_DIR" ] && mkdir -p "$CONFIG_DIR"
 
 # If config already exists, then exit gracefully
-[ ! -f "$CONFIG_DIR/config "] || exit
+[ ! -f "$CONFIG_DIR/config " ] || exit
 
 # Create Daemon Config File
 cat > "$CONFIG_DIR/config" <<EOF
