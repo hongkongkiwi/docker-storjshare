@@ -1,0 +1,19 @@
+#!/usr/bin/with-contenv bash
+
+CONFIG_DIR="$HOME/.config/storjshare/config"
+
+# Check if config dir exists, if not make it
+[ ! -d "$CONFIG_DIR"] && mkdir -p "$CONFIG_DIR"
+
+# If config already exists, then exit gracefully
+[ ! -f "$CONFIG_DIR/config "] || exit
+
+# Create Daemon Config File
+cat > "$CONFIG_DIR/config" <<EOF
+{
+  "daemonRpcPort": ${SJ_DAEMON_RPC_PORT},
+  "daemonRpcAddress": "${SJ_DAEMON_RPC_ADDRESS}",
+  "daemonLogFilePath": "${SJ_DAEMON_LOG_FILE}",
+  "daemonLogVerbosity": ${SJ_DAEMON_LOGLEVEL}
+}
+EOF

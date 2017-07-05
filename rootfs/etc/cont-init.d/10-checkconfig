@@ -1,0 +1,3 @@
+#!/bin/sh
+
+[ -e "/config/config.json" ] || { echo "ERROR: Config file not found! /config/config.json"; exit 1; }

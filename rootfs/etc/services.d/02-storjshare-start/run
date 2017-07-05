@@ -1,0 +1,3 @@
+#!/usr/bin/execlineb -P
+
+storjshare-start -c "/config/config.json"
