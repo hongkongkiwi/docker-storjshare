@@ -14,7 +14,7 @@ ARG TMP_BUILD_DIR="/tmp/build"
 ENV SJ_CONFIGFILE="/config/config.json"
 
 ENV SJ_DAEMON_LOGLEVEL=3
-ENV SJ_DAEMON_RPC_PORT="45015"
+ENV SJ_DAEMON_RPC_PORT="4000"
 ENV SJ_DAEMON_RPC_ADDRESS="0.0.0.0"
 ENV SJ_DAEMON_LOG_FILE="/logs/daemon.log"
 
@@ -63,8 +63,9 @@ RUN \
   npm cache clean \
     --force \
     --suppess-warnings \
-    --quiet && \
-  cd / && \
+    --quiet
+
+RUN rm -r /root/.cache && \
   apk del ca-certificates wget tar curl g++ git make git python && \
   rm -rf /var/cache/apk/* && \
   rm -rf ${TMP_BUILD_DIR}

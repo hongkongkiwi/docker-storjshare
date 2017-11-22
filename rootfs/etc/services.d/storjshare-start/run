@@ -8,7 +8,7 @@ foreground
 
 background
 {
-	exec "/var/run/s6/services/storjshare-start/start-all-configs.sh"
+  exec s6-setuidgid node "/start-all"
 }
 
 s6-pause -th
